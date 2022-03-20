@@ -1,5 +1,7 @@
 <?php
 
+include_once dirname(__FILE__) . "/../config.php";
+
 class Head
 {
     // General params
@@ -9,16 +11,17 @@ class Head
     private string $image;
     private string $url;
     private string $keywords;
+    private string $favicon;
 
     // Open Graph params
-    private string $og_type;
+    private string $og_type = "website";
     private string $og_url;
     private string $og_title;
     private string $og_description;
     private string $og_image;
 
     // Twitter params
-    private string $tw_card;
+    private string $tw_card = "summary";
     private string $tw_url;
     private string $tw_title;
     private string $tw_description;
@@ -27,9 +30,121 @@ class Head
     public function __construct()
     {
         $this->setCharset(mb_internal_encoding());
+
+        global $CONFIG;
+        $this->setFavicon($CONFIG['head']['favicon']);
+    }
+
+    private function PrintParams()
+    {
+        // General params
+        ?>
+        <meta http-equiv="Content-Type" content="text/html; charset=<?= $this->getCharset(); ?>">
+        <link rel="icon" href="<?= $this->getTitle(); ?>">
+        <title><?= $this->getTitle(); ?></title>
+        <meta name="title" content="<?= $this->getTitle(); ?>">
+        <meta name="description" content="<?= $this->getDescription(); ?>">
+        <meta name="keywords" content="<?= $this->getKeywords(); ?>">
+        <?php
+
+        // Open Graph params
+        ?>
+        <meta property="og:type" content="<?= $this->getOgType(); ?>">
+        <?php
+
+        if (empty($this->getOgUrl()) == false) {
+            ?>
+            <meta property="og:url" content="<?= $this->getOgUrl(); ?>">
+            <?php
+        } else {
+            ?>
+            <meta property="og:url" content="<?= $this->getUrl(); ?>">
+            <?php
+        }
+
+        if (empty($this->getOgTitle()) == false) {
+            ?>
+            <meta property="og:title" content="<?= $this->getOgTitle(); ?>">
+            <?php
+        } else {
+            ?>
+            <meta property="og:title" content="<?= $this->getTitle(); ?>">
+            <?php
+        }
+
+        if (empty($this->getOgDescription()) == false) {
+            ?>
+            <meta property="og:description" content="<?= $this->getOgDescription(); ?>">
+            <?php
+        } else {
+            ?>
+            <meta property="og:description" content="<?= $this->getDescription(); ?>">
+            <?php
+        }
+
+        if (empty($this->getOgImage()) == false) {
+            ?>
+            <meta property="og:image" content="<?= $this->getOgImage(); ?>">
+            <?php
+        } else {
+            ?>
+            <meta property="og:image" content="<?= $this->getImage(); ?>">
+            <?php
+        }
+
+        // Twitter params
+        ?>
+        <meta property="twitter:card" content="<?= $this->getTwCard(); ?>">
+        <?php
+
+        if (empty($this->getTwUrl()) == false) {
+            ?>
+            <meta property="twitter:url" content="<?= $this->getTwUrl(); ?>">
+            <?php
+        } else {
+            ?>
+            <meta property="twitter:url" content="<?= $this->getUrl(); ?>">
+            <?php
+        }
+
+        if (empty($this->getTwTitle()) == false) {
+            ?>
+            <meta property="twitter:title" content="<?= $this->getTwTitle(); ?>">
+            <?php
+        } else {
+            ?>
+            <meta property="twitter:title" content="<?= $this->getTitle(); ?>">
+            <?php
+        }
+
+        if (empty($this->getTwDescription()) == false) {
+            ?>
+            <meta property="twitter:description" content="<?= $this->getTwDescription(); ?>">
+            <?php
+        } else {
+            ?>
+            <meta property="twitter:description" content="<?= $this->getDescription(); ?>">
+            <?php
+        }
+
+        if (empty($this->getTwImage()) == false) {
+            ?>
+            <meta property="twitter:image" content="<?= $this->getTwImage(); ?>">
+            <?php
+        } else {
+            ?>
+            <meta property="twitter:image" content="<?= $this->getImage(); ?>">
+            <?php
+        }
+    }
+
+    private function PrintStyles()
+    {
+
     }
 
     #region General params
+
     /**
      * Returns formatted page title
      * @return string
@@ -128,6 +243,22 @@ class Head
     public function setUrl(string $url): void
     {
         $this->url = $url;
+    }
+
+    /**
+     * @return string
+     */
+    public function getFavicon(): string
+    {
+        return $this->favicon;
+    }
+
+    /**
+     * @param string $favicon
+     */
+    public function setFavicon(string $favicon): void
+    {
+        $this->favicon = $favicon;
     }
     #endregion General params
 
