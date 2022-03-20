@@ -27,12 +27,17 @@ class Head
     private string $tw_description;
     private string $tw_image;
 
-    public function __construct()
+    public function __construct($title, $description = null)
     {
+        $this->setTitle($title);
+        if ($description !== null) {
+            $this->setDescription($description);
+        }
         $this->setCharset(mb_internal_encoding());
 
         global $CONFIG;
         $this->setFavicon($CONFIG['head']['favicon']);
+        $this->setUrl($CONFIG['links']['url']);
     }
 
     private function PrintParams()
@@ -40,53 +45,62 @@ class Head
         // General params
         ?>
         <meta http-equiv="Content-Type" content="text/html; charset=<?= $this->getCharset(); ?>">
-        <link rel="icon" href="<?= $this->getTitle(); ?>">
-        <title><?= $this->getTitle(); ?></title>
+        <link rel="icon" href="<?= $this->getFavicon(); ?>">
         <meta name="title" content="<?= $this->getTitle(); ?>">
-        <meta name="description" content="<?= $this->getDescription(); ?>">
-        <meta name="keywords" content="<?= $this->getKeywords(); ?>">
         <?php
+
+        if (isset($this->description) && $this->description != "") {
+            ?>
+            <meta name="description" content="<?= $this->getDescription(); ?>">
+            <?php
+        }
+
+        if (isset($this->keywords) && $this->keywords != "") {
+            ?>
+            <meta name="keywords" content="<?= $this->getKeywords(); ?>">
+            <?php
+        }
 
         // Open Graph params
         ?>
         <meta property="og:type" content="<?= $this->getOgType(); ?>">
         <?php
 
-        if (empty($this->getOgUrl()) == false) {
+        if (isset($this->og_url) && $this->og_url != "") {
             ?>
             <meta property="og:url" content="<?= $this->getOgUrl(); ?>">
             <?php
-        } else {
+        } elseif (isset($this->url) && $this->url != "") {
             ?>
             <meta property="og:url" content="<?= $this->getUrl(); ?>">
             <?php
         }
 
-        if (empty($this->getOgTitle()) == false) {
+        if (isset($this->og_title) && $this->og_title != "") {
             ?>
             <meta property="og:title" content="<?= $this->getOgTitle(); ?>">
             <?php
-        } else {
+        } elseif (isset($this->title) && $this->title != "") {
             ?>
             <meta property="og:title" content="<?= $this->getTitle(); ?>">
             <?php
         }
 
-        if (empty($this->getOgDescription()) == false) {
+        if (isset($this->og_description) && $this->og_description != "") {
             ?>
             <meta property="og:description" content="<?= $this->getOgDescription(); ?>">
             <?php
-        } else {
+        } elseif (isset($this->description) && $this->description != "") {
             ?>
             <meta property="og:description" content="<?= $this->getDescription(); ?>">
             <?php
         }
 
-        if (empty($this->getOgImage()) == false) {
+        if (isset($this->og_image) && $this->og_image != "") {
             ?>
             <meta property="og:image" content="<?= $this->getOgImage(); ?>">
             <?php
-        } else {
+        } elseif (isset($this->image) && $this->image != "") {
             ?>
             <meta property="og:image" content="<?= $this->getImage(); ?>">
             <?php
@@ -97,41 +111,41 @@ class Head
         <meta property="twitter:card" content="<?= $this->getTwCard(); ?>">
         <?php
 
-        if (empty($this->getTwUrl()) == false) {
+        if (isset($this->tw_url) && $this->tw_url != "") {
             ?>
             <meta property="twitter:url" content="<?= $this->getTwUrl(); ?>">
             <?php
-        } else {
+        } elseif (isset($this->url) && $this->url != "") {
             ?>
             <meta property="twitter:url" content="<?= $this->getUrl(); ?>">
             <?php
         }
 
-        if (empty($this->getTwTitle()) == false) {
+        if (isset($this->tw_title) && $this->tw_title != "") {
             ?>
             <meta property="twitter:title" content="<?= $this->getTwTitle(); ?>">
             <?php
-        } else {
+        } elseif (isset($this->title) && $this->title != "") {
             ?>
             <meta property="twitter:title" content="<?= $this->getTitle(); ?>">
             <?php
         }
 
-        if (empty($this->getTwDescription()) == false) {
+        if (isset($this->tw_description) && $this->tw_description != "") {
             ?>
             <meta property="twitter:description" content="<?= $this->getTwDescription(); ?>">
             <?php
-        } else {
+        } elseif (isset($this->description) && $this->description != "") {
             ?>
             <meta property="twitter:description" content="<?= $this->getDescription(); ?>">
             <?php
         }
 
-        if (empty($this->getTwImage()) == false) {
+        if (isset($this->tw_image) && $this->tw_image != "") {
             ?>
             <meta property="twitter:image" content="<?= $this->getTwImage(); ?>">
             <?php
-        } else {
+        } elseif (isset($this->image) && $this->image != "") {
             ?>
             <meta property="twitter:image" content="<?= $this->getImage(); ?>">
             <?php
@@ -140,7 +154,36 @@ class Head
 
     private function PrintStyles()
     {
+        global $CONFIG;
+        foreach ($CONFIG['style'] as $file) {
+            ?>
+            <link rel="stylesheet" href="<?= $file; ?>">
+            <?php
+        }
+    }
 
+    private function PrintJavascript()
+    {
+        global $CONFIG;
+        foreach ($CONFIG['javascript'] as $file) {
+            ?>
+            <script type="text/javascript" src="<?= $file ?>"></script>
+            <?php
+        }
+    }
+
+    public function PrintHead()
+    {
+        ?>
+        <head>
+            <title><?= $this->getTitle(); ?></title>
+            <?php
+            $this->PrintParams();
+            $this->PrintJavascript();
+            $this->PrintStyles();
+            ?>
+        </head>
+        <?php
     }
 
     #region General params
