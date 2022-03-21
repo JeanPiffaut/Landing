@@ -81,10 +81,16 @@ class Page
 
     protected function Header()
     {
+        ?>
+        Este es el master header
+        <?php
     }
 
     protected function Footer()
     {
+        ?>
+        Este es el master footer
+        <?php
     }
 
     #region General params
