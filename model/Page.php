@@ -56,7 +56,7 @@ class Page
             <?php
         }
 
-        // Set content output
+        // Set footer output
         ob_start();
         $this->Footer();
         $footer = ob_get_contents();
