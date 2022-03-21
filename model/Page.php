@@ -1,12 +1,14 @@
 <?php
 
 include_once dirname(__FILE__) . "/../config.php";
+include_once dirname(__FILE__) . "/Head.php";
 
-abstract class Page
+class Page
 {
     private Head $head;
+    private string $page_lang = "";
 
-    protected string $title;
+    protected string $title = "";
     protected string $description;
 
     public function __construct()
@@ -14,8 +16,30 @@ abstract class Page
         $this->setHead(new Head($this->getTitle()));
     }
 
+    public function PrintPage()
+    {
+        $head = $this->getHead();
+
+        ?>
+        <html lang="<?= $this->page_lang; ?>">
+        <?php
+        $head->PrintHead();
+        ?>
+        <body>
+        <?php
+        $this->Header();
+        $this->Content();
+        $this->Footer();
+        ?>
+        </body>
+        </html>
+        <?php
+    }
+
     protected function Content()
     {
+        ?>
+        <?php
     }
 
     protected function Header()
