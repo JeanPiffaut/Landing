@@ -6,7 +6,7 @@ include_once dirname(__FILE__) . "/Head.php";
 class Page
 {
     private Head $head;
-    private string $page_lang = "ES";
+    private string $page_lang = "es";
 
     protected string $title = "";
     protected string $description;
@@ -27,9 +27,51 @@ class Page
         ?>
         <body>
         <?php
+
+        // Set header output
+        ob_start();
         $this->Header();
+        $header = ob_get_contents();
+        ob_end_clean();
+
+        if(empty($header) == false) {
+
+            ?>
+            <header>
+                <?= $header; ?>
+            </header>
+            <?php
+        }
+
+        // Set content output
+        ob_start();
         $this->Content();
+        $content = ob_get_contents();
+        ob_end_clean();
+
+        if(empty($content) == false) {
+
+            ?>
+            <main>
+                <?= $content; ?>
+            </main>
+            <?php
+        }
+
+        // Set content output
+        ob_start();
         $this->Footer();
+        $footer = ob_get_contents();
+        ob_end_clean();
+
+        if(empty($footer) == false) {
+
+            ?>
+            <footer>
+                <?= $footer; ?>
+            </footer>
+            <?php
+        }
         ?>
         </body>
         </html>
@@ -38,8 +80,6 @@ class Page
 
     protected function Content()
     {
-        ?>
-        <?php
     }
 
     protected function Header()
