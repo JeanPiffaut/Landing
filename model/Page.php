@@ -6,7 +6,7 @@ include_once dirname(__FILE__) . "/Head.php";
 class Page
 {
     private Head $head;
-    private string $page_lang = "";
+    private string $page_lang = "ES";
 
     protected string $title = "";
     protected string $description;
