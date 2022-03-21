@@ -34,8 +34,7 @@ class Page
         $header = ob_get_contents();
         ob_end_clean();
 
-        if(empty($header) == false) {
-
+        if (empty($header) == false) {
             ?>
             <header>
                 <?= $header; ?>
@@ -49,8 +48,7 @@ class Page
         $content = ob_get_contents();
         ob_end_clean();
 
-        if(empty($content) == false) {
-
+        if (empty($content) == false) {
             ?>
             <main>
                 <?= $content; ?>
@@ -64,8 +62,7 @@ class Page
         $footer = ob_get_contents();
         ob_end_clean();
 
-        if(empty($footer) == false) {
-
+        if (empty($footer) == false) {
             ?>
             <footer>
                 <?= $footer; ?>
