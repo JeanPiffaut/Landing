@@ -21,6 +21,7 @@ class Page
         $head = $this->getHead();
 
         ?>
+        <!DOCTYPE html>
         <html lang="<?= $this->page_lang; ?>">
         <?php
         $head->PrintHead();
