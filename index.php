@@ -19,3 +19,4 @@ include_once dirname(__FILE__) . "/controller/" . $page_data['file'];
 
 $page = new $page_data['class']();
 $page->PrintPage();
+exit();
