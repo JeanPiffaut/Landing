@@ -44,6 +44,7 @@ class Form
     public function getFormStart(): string
     {
         $html = '<form name="' . $this->getId() . '" id="' . $this->getId() . '"';
+        $html .= ' action="' . $this->getAction() . '"';
         $html .= ' target="' . $this->getTarget() . '"';
         $html .= ' method="' . $this->getMethod() . '"';
 
