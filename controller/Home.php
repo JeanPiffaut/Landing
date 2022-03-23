@@ -1,8 +1,5 @@
 <?php
 
-include_once dirname(__FILE__) . "/../model/Page.php";
-include_once dirname(__FILE__) . "/../model/Form.php";
-
 class Home extends Page
 {
     public string $title = "Home";
@@ -13,7 +10,9 @@ class Home extends Page
 
             print $_REQUEST['poto'];
         }
-        $form = new Form("prueba", "/index.php?page=home", "GET", "_self", false, true);
+
+        global $CONFIG;
+        $form = new Form("prueba", $CONFIG['links']['url'] . "/index.php?page=home", "GET", "_self", false, true);
 
         print $form->getFormStart();
         ?>

@@ -1,8 +1,5 @@
 <?php
 
-include_once dirname(__FILE__) . "/../config.php";
-include_once dirname(__FILE__) . "/Head.php";
-
 class Page
 {
     private Head $head;
