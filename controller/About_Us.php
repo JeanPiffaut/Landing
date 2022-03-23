@@ -1,7 +1,5 @@
 <?php
 
-include_once dirname(__FILE__) . "/../model/Page.php";
-
 class About_Us extends Page
 {
     public string $title = "About us";

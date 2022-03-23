@@ -1,7 +1,5 @@
 <?php
 
-use JetBrains\PhpStorm\Pure;
-
 class Form
 {
     private string $id;
@@ -46,6 +44,7 @@ class Form
     public function getFormStart(): string
     {
         $html = '<form name="' . $this->getId() . '" id="' . $this->getId() . '"';
+        $html .= ' action="' . $this->getAction() . '"';
         $html .= ' target="' . $this->getTarget() . '"';
         $html .= ' method="' . $this->getMethod() . '"';
 
@@ -70,7 +69,7 @@ class Form
      * Returns the end of the form tag including the validation functions in case it is active.
      * @return string
      */
-    #[Pure] public function getFormEnd(): string
+    public function getFormEnd(): string
     {
         $html = '</form>';
 

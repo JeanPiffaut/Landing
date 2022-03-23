@@ -1,6 +1,6 @@
 <?php
 
-include_once dirname(__FILE__) . "/config.php";
+include_once dirname(__FILE__) . "/autoload.php";
 
 global $ROUTER;
 if (isset($_REQUEST['page']) && $_REQUEST['page'] != "") {
@@ -17,6 +17,7 @@ if (isset($ROUTER['pages'][$page_name])) {
 
 include_once dirname(__FILE__) . "/controller/" . $page_data['file'];
 
+//
 $page = new $page_data['class']();
 $page->PrintPage();
 exit();

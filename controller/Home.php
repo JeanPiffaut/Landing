@@ -1,25 +1,27 @@
 <?php
 
-include_once dirname(__FILE__) . "/../model/Page.php";
-include_once dirname(__FILE__) . "/../model/Form.php";
-
 class Home extends Page
 {
     public string $title = "Home";
 
     public function Content()
     {
-        if(isset($_REQUEST['poto'])) {
-
+        if (isset($_REQUEST['poto'])) {
             print $_REQUEST['poto'];
         }
-        $form = new Form("prueba", "/index.php?page=home", "GET", "_self", false, true);
+
+        global $CONFIG;
+        $form = new Form("prueba", $CONFIG['links']['url'] . "/index.php?page=home", "POST", "_self", false, true);
 
         print $form->getFormStart();
         ?>
-        <input type="text" name="poto">
-        Hola mundo
-        <button>submit</button>
+        <main>
+            <label>
+                <input type="text" name="poto">
+            </label>
+            Hola mundo
+            <button>submit</button>
+        </main>
         <?php
         print $form->getFormEnd();
     }
@@ -27,7 +29,7 @@ class Home extends Page
     public function Footer()
     {
         ?>
-        Este es el footer del Home
+        <footer>Este es el footer del Home</footer>
         <?php
     }
 }
