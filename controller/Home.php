@@ -6,8 +6,7 @@ class Home extends Page
 
     public function Content()
     {
-        if(isset($_REQUEST['poto'])) {
-
+        if (isset($_REQUEST['poto'])) {
             print $_REQUEST['poto'];
         }
 
@@ -16,11 +15,13 @@ class Home extends Page
 
         print $form->getFormStart();
         ?>
-        <label>
-            <input type="text" name="poto">
-        </label>
-        Hola mundo
-        <button>submit</button>
+        <main>
+            <label>
+                <input type="text" name="poto">
+            </label>
+            Hola mundo
+            <button>submit</button>
+        </main>
         <?php
         print $form->getFormEnd();
     }
@@ -28,7 +29,7 @@ class Home extends Page
     public function Footer()
     {
         ?>
-        Este es el footer del Home
+        <footer>Este es el footer del Home</footer>
         <?php
     }
 }

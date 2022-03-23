@@ -33,11 +33,7 @@ class Page
         ob_end_clean();
 
         if (empty($header) == false) {
-            ?>
-            <header>
-                <?= $header; ?>
-            </header>
-            <?php
+            print $header;
         }
 
         // Set content output
@@ -47,11 +43,7 @@ class Page
         ob_end_clean();
 
         if (empty($content) == false) {
-            ?>
-            <main>
-                <?= $content; ?>
-            </main>
-            <?php
+            print $content;
         }
 
         // Set footer output
@@ -61,11 +53,7 @@ class Page
         ob_end_clean();
 
         if (empty($footer) == false) {
-            ?>
-            <footer>
-                <?= $footer; ?>
-            </footer>
-            <?php
+            print $footer;
         }
         ?>
         </body>
@@ -80,14 +68,14 @@ class Page
     protected function Header()
     {
         ?>
-        Este es el master header
+        <header>Este es el master header</header>
         <?php
     }
 
     protected function Footer()
     {
         ?>
-        Este es el master footer
+        <footer>Este es el master footer</footer>
         <?php
     }
 
