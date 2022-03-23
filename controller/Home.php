@@ -12,11 +12,13 @@ class Home extends Page
         }
 
         global $CONFIG;
-        $form = new Form("prueba", $CONFIG['links']['url'] . "/index.php?page=home", "GET", "_self", false, true);
+        $form = new Form("prueba", $CONFIG['links']['url'] . "/index.php?page=home", "POST", "_self", false, true);
 
         print $form->getFormStart();
         ?>
-        <input type="text" name="poto">
+        <label>
+            <input type="text" name="poto">
+        </label>
         Hola mundo
         <button>submit</button>
         <?php
