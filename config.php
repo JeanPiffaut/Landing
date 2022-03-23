@@ -18,3 +18,19 @@ $CONFIG['style'][] = $CONFIG['links']['style'] . "/main.css";
 
 // Javascript files
 $CONFIG['javascript'][] = $CONFIG['links']['javascript'] . "/main.js";
+
+
+global $ROUTER;
+$ROUTER = array();
+
+$ROUTER['default'] = "home";
+$ROUTER['pages']['home'] = array(
+    "name" => "home",
+    "file" => "Home.php",
+    "class" => "Home"
+);
+$ROUTER['pages']['about_us'] = array(
+    "name" => "about_us",
+    "file" => "About_Us.php",
+    "class" => "About_Us"
+);

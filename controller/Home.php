@@ -12,4 +12,11 @@ class Home extends Page
         Hola mundo
         <?php
     }
+
+    public function Footer()
+    {
+        ?>
+        Este es el footer del Home
+        <?php
+    }
 }
