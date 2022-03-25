@@ -4,7 +4,7 @@ global $CONFIG;
 $CONFIG = array();
 
 // Links: Section in which you can list the different useful links within the web.
-$CONFIG['links']['url'] = "http://localhost:8888/Landing";
+$CONFIG['links']['url'] = "http://localhost:88/Landing";
 $CONFIG['links']['public_url'] = $CONFIG['links']['url'] . "/view";
 $CONFIG['links']['style'] = $CONFIG['links']['public_url'] . "/css";
 $CONFIG['links']['javascript'] = $CONFIG['links']['public_url'] . "/js";
