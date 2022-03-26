@@ -11,7 +11,7 @@ class Home extends Page
         }
 
         global $CONFIG;
-        $form = new Form("prueba", $CONFIG['links']['url'] . "/index.php?page=home", "POST", "_self", false, true);
+        $form = new Form("prueba", $CONFIG['links']['url'], "POST", "_self", false, true);
 
         print $form->getFormStart();
         ?>
