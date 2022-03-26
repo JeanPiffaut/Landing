@@ -12,7 +12,7 @@ if (isset($_REQUEST['page']) && $_REQUEST['page'] != "") {
 if (isset($ROUTER['pages'][$page_name])) {
     $page_data = $ROUTER['pages'][$page_name];
 } else {
-    $page_data = $ROUTER['pages'][$ROUTER['default']];
+    $page_data = $ROUTER['pages'][$ROUTER['not_found']];
 }
 
 include_once dirname(__FILE__) . "/controller/" . $page_data['file'];

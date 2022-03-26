@@ -1,6 +1,6 @@
 <?php
 
-class About_Us extends Page
+class About_Us extends Master_Page
 {
     public string $title = "About us";
 

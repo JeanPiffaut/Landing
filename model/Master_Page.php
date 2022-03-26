@@ -1,6 +1,6 @@
 <?php
 
-class Page
+class Master_Page
 {
     private Head $head;
     private string $page_lang = "es";

@@ -1,6 +1,6 @@
 <?php
 
-class Home extends Page
+class Home extends Master_Page
 {
     public string $title = "Home";
 
