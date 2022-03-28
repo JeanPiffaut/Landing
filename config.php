@@ -24,10 +24,16 @@ global $ROUTER;
 $ROUTER = array();
 
 $ROUTER['default'] = "home";
+$ROUTER['not_found'] = "not_found";
 $ROUTER['pages']['home'] = array(
     "name" => "home",
     "file" => "Home.php",
     "class" => "Home"
+);
+$ROUTER['pages']['not_found'] = array(
+    "name" => "not_found",
+    "file" => "Not_found.php",
+    "class" => "Not_Found"
 );
 $ROUTER['pages']['about_us'] = array(
     "name" => "about_us",
