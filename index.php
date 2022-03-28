@@ -19,9 +19,9 @@ include_once dirname(__FILE__) . "/controller/" . $page_data['file'];
 
 $page = new $page_data['class']();
 
-if (isset($_REQUEST['actions']) && $_REQUEST['actions'] != "") {
+if (isset($_REQUEST['action']) && $_REQUEST['action'] != "") {
 
-    $page->Actions($_REQUEST['actions']);
+    $page->ExecuteActions($_REQUEST['action']);
 }
 
 $page->PrintPage();

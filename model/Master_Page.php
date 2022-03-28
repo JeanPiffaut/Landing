@@ -7,6 +7,7 @@ class Master_Page
 
     protected string $title = "";
     protected string $description;
+    private string $action_results = "";
 
     public function __construct()
     {
@@ -57,12 +58,32 @@ class Master_Page
         }
         ?>
         </body>
+        <?php
+
+        $this->PrintActionResults();
+
+        ?>
         </html>
         <?php
     }
 
-    public function Actions($action)
+    protected function Actions($action)
     {
+    }
+
+    public function ExecuteActions($action)
+    {
+        ob_start();
+        $this->Actions($action);
+        $action_prints = ob_get_contents();
+        ob_end_clean();
+
+        $this->action_results = $action_prints;
+    }
+
+    public function PrintActionResults() {
+
+        print $this->action_results;
     }
 
     protected function Content()
