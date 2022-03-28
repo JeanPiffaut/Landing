@@ -10,6 +10,14 @@ $CONFIG['links']['style'] = $CONFIG['links']['public_url'] . "/css";
 $CONFIG['links']['javascript'] = $CONFIG['links']['public_url'] . "/js";
 $CONFIG['links']['image'] = $CONFIG['links']['public_url'] . "/image";
 
+// DataBase: Parameters for creating database connections.
+$CONFIG['database']['name'] = "";
+$CONFIG['database']['host'] = "localhost";
+$CONFIG['database']['port'] = "3306";
+$CONFIG['database']['user'] = "root";
+$CONFIG['database']['pass'] = "root";
+$CONFIG['database']['socket'] = "/Applications/MAMP/tmp/mysql/mysql.sock";
+
 // Head general params
 $CONFIG['head']['favicon'] = $CONFIG['links']['image'] . "/favicon.png";
 

@@ -4,6 +4,7 @@ class Master_Page
 {
     private Head $head;
     private string $page_lang = "es";
+    protected bool $connect_bd = false;
 
     protected string $title = "";
     protected string $description;
@@ -12,6 +13,18 @@ class Master_Page
     public function __construct()
     {
         $this->setHead(new Head($this->getTitle()));
+
+        if ($this->connect_bd === true) {
+            global $CONFIG;
+            \DBFunctions\DBConnect(
+                $CONFIG['database']['host'],
+                $CONFIG['database']['user'],
+                $CONFIG['database']['pass'],
+                $CONFIG['database']['name'],
+                $CONFIG['database']['port'],
+                $CONFIG['database']['socket']
+            );
+        }
     }
 
     public function PrintPage()
@@ -81,8 +94,8 @@ class Master_Page
         $this->action_results = $action_prints;
     }
 
-    public function PrintActionResults() {
-
+    public function PrintActionResults()
+    {
         print $this->action_results;
     }
 
