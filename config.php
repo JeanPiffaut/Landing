@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 global $CONFIG;
 $CONFIG = array();
@@ -11,7 +12,7 @@ $CONFIG['links']['javascript'] = $CONFIG['links']['public_url'] . "/js";
 $CONFIG['links']['image'] = $CONFIG['links']['public_url'] . "/image";
 
 // DataBase: Parameters for creating database connections.
-$CONFIG['database']['name'] = "mysql";
+$CONFIG['database']['name'] = "basic";
 $CONFIG['database']['host'] = "localhost";
 $CONFIG['database']['port'] = "3306";
 $CONFIG['database']['user'] = "root";

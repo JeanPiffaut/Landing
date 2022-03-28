@@ -7,6 +7,10 @@ class Home extends Master_Page
 
     public function Content()
     {
+        $product = new Product();
+        $prres = $product->Select(array("id", "name"));
+        var_dump(\DBFunctions\DBGetError());
+
         global $CONFIG;
         $form = new Form("prueba", $CONFIG['links']['url'] . "/home", "POST", "_self", false, true);
 
@@ -19,6 +23,11 @@ class Home extends Master_Page
             </label>
             Hola mundo
             <button>submit</button>
+            <?php
+            while ($prrow = \DBFunctions\DBFetch($prres)) {
+                print $prrow['name'] . "<br>";
+            }
+            ?>
         </main>
         <?php
         print $form->getFormEnd();
