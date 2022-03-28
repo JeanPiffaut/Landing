@@ -11,7 +11,7 @@ $CONFIG['links']['javascript'] = $CONFIG['links']['public_url'] . "/js";
 $CONFIG['links']['image'] = $CONFIG['links']['public_url'] . "/image";
 
 // DataBase: Parameters for creating database connections.
-$CONFIG['database']['name'] = "";
+$CONFIG['database']['name'] = "mysql";
 $CONFIG['database']['host'] = "localhost";
 $CONFIG['database']['port'] = "3306";
 $CONFIG['database']['user'] = "root";

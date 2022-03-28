@@ -3,6 +3,7 @@
 class Home extends Master_Page
 {
     public string $title = "Home";
+    public bool $connect_bd = true;
 
     public function Content()
     {
