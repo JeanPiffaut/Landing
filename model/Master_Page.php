@@ -61,6 +61,10 @@ class Master_Page
         <?php
     }
 
+    public function Actions($action)
+    {
+    }
+
     protected function Content()
     {
     }

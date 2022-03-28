@@ -18,5 +18,11 @@ if (isset($ROUTER['pages'][$page_name])) {
 include_once dirname(__FILE__) . "/controller/" . $page_data['file'];
 
 $page = new $page_data['class']();
+
+if (isset($_REQUEST['actions']) && $_REQUEST['actions'] != "") {
+
+    $page->Actions($_REQUEST['actions']);
+}
+
 $page->PrintPage();
 exit();
